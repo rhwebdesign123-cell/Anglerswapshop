@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Anglers Swap Shop | Buy, Sell & Swap Fishing Gear</title>
+<meta name="description" content="The UK's dedicated fishing gear marketplace. Buy, sell and swap coarse, sea, game and sport fishing equipment with anglers near you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@300;400;600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --moss:      #3a4a2e;
+  --fern:      #4e6b35;
+  --sage:      #7a9b5e;
+  --lime:      #a8c66c;
+  --mud:       #5c4a2a;
+  --bark:      #7a6240;
+  --cream:     #f0ead8;
+  --bone:      #e5dcc5;
+  --water:     #2d4a5c;
+  --river:     #3d6b7a;
+  --camo1:     #3d4a2e;
+  --camo2:     #5a6b40;
+  --camo3:     #2a3520;
+  --dark:      #1a1f12;
+  --text:      #1e2015;
+  --muted:     #5a6642;
+  --accent:    #c8a84b;
+  --rust:      #8b4513;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  background: var(--dark);
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ── CAMO TEXTURE UTILITY ── */
+.camo-bg {
+  background-image:
+    radial-gradient(ellipse 80px 60px at 10% 20%, var(--camo3) 0%, transparent 70%),
+    radial-gradient(ellipse 120px 80px at 60% 10%, var(--camo2) 0%, transparent 70%),
+    radial-gradient(ellipse 90px 70px at 80% 60%, var(--camo1) 0%, transparent 70%),
+    radial-gradient(ellipse 60px 50px at 30% 75%, var(--camo3) 0%, transparent 70%),
+    radial-gradient(ellipse 100px 80px at 90% 30%, var(--moss) 0%, transparent 70%);
+  background-color: var(--camo1);
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(26,31,18,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(168,198,108,0.2);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+}
+
+.nav-logo .fish-icon {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  clip-path: polygon(0 50%, 30% 0, 80% 20%, 100% 50%, 80% 80%, 30% 100%);
+  flex-shrink: 0;
+}
+
+.nav-logo span {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--lime);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--bone);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--lime); }
+
+.nav-cta {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--fern);
+  color: var(--cream);
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.nav-cta:hover { background: var(--sage); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fishing montage using SVG-drawn scene */
+.hero-canvas {
+  position: absolute; inset: 0;
+  background: linear-gradient(170deg, #0d1a0a 0%, #1a2d12 30%, #0a1820 60%, #071015 100%);
+}
+
+.hero-canvas svg {
+  width: 100%; height: 100%;
+  position: absolute; inset: 0;
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,15,6,0.97) 0%, rgba(10,15,6,0.6) 40%, rgba(10,15,6,0.15) 100%);
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 4rem 2.5rem 5rem;
+  max-width: 900px;
+}
+
+.hero-tag {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 40px; height: 2px;
+  background: var(--accent);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.9;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.hero h1 span {
+  color: var(--lime);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: rgba(240,234,216,0.8);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+
+.btn-primary {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: var(--fern);
+  color: var(--cream);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
+
+.btn-ghost {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--cream);
+  border: 1.5px solid rgba(240,234,216,0.4);
+  padding: 1rem 2.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-ghost:hover { border-color: var(--lime); color: var(--lime); }
+
+/* ── FISHING CATEGORY CARDS ── */
+.scene-tabs {
+  display: flex; gap: 0;
+  position: absolute;
+  top: 0; right: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+}
+
+.scene-panel {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.75;
+}
+
+.scene-panel svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--moss);
+  border-top: 2px solid var(--accent);
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--lime);
+  display: block;
+}
+
+.stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0.7;
+}
+
+/* ── SECTION WRAPPER ── */
+section { padding: 5rem 2.5rem; }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-tag {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--cream);
+}
+
+/* ── CATEGORY TABS ── */
+.category-nav {
+  background: rgba(26,31,18,0.6);
+  border-top: 1px solid rgba(168,198,108,0.15);
+  border-bottom: 1px solid rgba(168,198,108,0.15);
+  padding: 0 2.5rem;
+  display: flex; gap: 0;
+  overflow-x: auto;
+}
+
+.cat-tab {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0.6;
+  padding: 1.2rem 2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  position: relative;
+}
+
+.cat-tab::before {
+  content: attr(data-icon);
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.cat-tab:hover { opacity: 1; color: var(--lime); }
+
+.cat-tab.active {
+  color: var(--lime);
+  opacity: 1;
+  border-bottom-color: var(--lime);
+}
+
+/* ── LISTINGS GRID ── */
+.listings-section {
+  background: linear-gradient(180deg, #0f1a0a 0%, #111c0d 100%);
+  padding: 3rem 2.5rem 5rem;
+}
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.listing-card {
+  background: rgba(58,74,46,0.25);
+  border: 1px solid rgba(122,155,94,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168,198,108,0.5);
+}
+
+.listing-img {
+  height: 180px;
+  background: var(--camo1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.listing-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--camo3) 0%, var(--camo1) 50%, var(--moss) 100%);
+}
+
+.listing-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.condition-badge {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.condition-badge.New    { background: var(--fern); color: var(--cream); }
+.condition-badge.Used   { background: var(--bark); color: var(--cream); }
+.condition-badge.Fair   { background: var(--water); color: var(--cream); }
+.condition-badge.Poor   { background: #5a3030; color: var(--cream); }
+
+.listing-body { padding: 1.2rem; }
+
+.listing-type {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.listing-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.listing-desc {
+  font-size: 0.85rem;
+  color: rgba(240,234,216,0.6);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.listing-footer {
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.listing-price {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--lime);
+}
+
+.listing-location {
+  font-size: 0.78rem;
+  color: rgba(240,234,216,0.5);
+}
+
+.listing-contact {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--moss);
+  color: var(--lime);
+  border: 1px solid var(--fern);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.listing-contact:hover { background: var(--fern); color: var(--cream); }
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: rgba(240,234,216,0.4);
+  display: none;
+}
+
+.empty-state.show { display: block; }
+
+/* ── SELL FORM ── */
+.sell-section {
+  background: linear-gradient(135deg, #0f1a0a 0%, #0a1820 100%);
+  border-top: 1px solid rgba(168,198,108,0.1);
+  padding: 5rem 2.5rem;
+}
+
+.form-wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  background: rgba(58,74,46,0.2);
+  border: 1px solid rgba(122,155,94,0.25);
+  border-radius: 6px;
+  padding: 3rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+
+.form-group.full { grid-column: 1 / -1; }
+
+.form-group label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(10,15,6,0.6);
+  border: 1px solid rgba(122,155,94,0.3);
+  border-radius: 3px;
+  color: var(--cream);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--sage);
+}
+
+.form-group select option { background: var(--dark); }
+
+.form-group textarea { min-height: 100px; resize: vertical; }
+
+/* Image upload */
+.upload-zone {
+  border: 2px dashed rgba(122,155,94,0.4);
+  border-radius: 4px;
+  padding: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(10,15,6,0.4);
+  position: relative;
+}
+
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--sage);
+  background: rgba(78,107,53,0.15);
+}
+
+.upload-zone input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+}
+
+.upload-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+
+.upload-zone p {
+  font-size: 0.9rem;
+  color: rgba(240,234,216,0.6);
+}
+
+.upload-zone strong { color: var(--lime); }
+
+.upload-preview {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem;
+}
+
+.preview-thumb {
+  width: 70px; height: 70px;
+  border-radius: 3px;
+  object-fit: cover;
+  border: 1px solid rgba(168,198,108,0.3);
+}
+
+.form-submit {
+  grid-column: 1 / -1;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--fern);
+  color: var(--cream);
+  border: none;
+  padding: 1.1rem 3rem;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+
+.form-submit:hover { background: var(--sage); }
+
+/* ── CSV UPLOAD ── */
+.csv-section {
+  background: rgba(26,31,18,0.8);
+  border: 1px solid rgba(168,198,108,0.15);
+  border-radius: 6px;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.csv-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.csv-section p {
+  font-size: 0.9rem;
+  color: rgba(240,234,216,0.6);
+  margin-bottom: 1.5rem;
+}
+
+.csv-format {
+  background: rgba(10,15,6,0.6);
+  border: 1px solid rgba(122,155,94,0.2);
+  border-radius: 3px;
+  padding: 1rem 1.25rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--lime);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.csv-actions {
+  display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+}
+
+.btn-csv {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: var(--moss);
+  color: var(--lime);
+  border: 1px solid var(--fern);
+  padding: 0.75rem 1.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-csv:hover { background: var(--fern); color: var(--cream); }
+
+.btn-csv input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+
+.csv-status {
+  font-size: 0.9rem;
+  color: var(--lime);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(168,198,108,0.1);
+  padding: 3rem 2.5rem 2rem;
+  text-align: center;
+}
+
+footer .fish-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  opacity: 0.4;
+}
+
+footer p {
+  font-size: 0.85rem;
+  color: rgba(240,234,216,0.4);
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: var(--sage);
+  text-decoration: none;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+  background: var(--fern);
+  color: var(--cream);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 1rem 1.75rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transform: translateY(100px); opacity: 0;
+  transition: all 0.3s;
+}
+
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { display: none; }
+  .hero-content { padding: 2rem 1.25rem 4rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+  .form-wrapper { padding: 1.75rem 1.25rem; }
+  .stats-bar { gap: 2rem; }
+  section { padding: 3rem 1.25rem; }
+  .listings-section { padding: 2rem 1.25rem 3rem; }
+  .sell-section { padding: 3rem 1.25rem; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content > * {
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-content .hero-tag  { animation-delay: 0.1s; }
+.hero-content h1         { animation-delay: 0.25s; }
+.hero-content .hero-sub  { animation-delay: 0.4s; }
+.hero-content .hero-actions { animation-delay: 0.55s; }
+
+@keyframes ripple {
+  0%   { r: 3; opacity: 1; }
+  100% { r: 18; opacity: 0; }
+}
+
+.water-ripple { animation: ripple 2.5s ease-out infinite; }
+.water-ripple2 { animation: ripple 2.5s ease-out 0.8s infinite; }
+.water-ripple3 { animation: ripple 2.5s ease-out 1.6s infinite; }
+
+@keyframes swim {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.swim { animation: swim 4s ease-in-out infinite; }
+.swim2 { animation: swim 3s ease-in-out 1s infinite; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.bob { animation: bob 2.5s ease-in-out infinite; }
+
+@keyframes cast {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  40%           { transform: rotate(-12deg); }
+}
+
+.cast { animation: cast 5s ease-in-out 2s infinite; transform-origin: bottom right; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="fish-icon"></div>
+    <span>The Anglers Swap Shop</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#listings">Browse</a></li>
+    <li><a href="#coarse">Coarse</a></li>
+    <li><a href="#sea">Sea</a></li>
+    <li><a href="#game">Game</a></li>
+    <li><a href="#sport">Sport</a></li>
+  </ul>
+  <a href="#sell" class="nav-cta">List Gear</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-canvas">
+    <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <!-- Sky gradient -->
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#0d1f0a"/>
+          <stop offset="40%" stop-color="#142b14"/>
+          <stop offset="70%" stop-color="#0a1820"/>
+          <stop offset="100%" stop-color="#060e14"/>
+        </linearGradient>
+        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#0d2030" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#05101a"/>
+        </linearGradient>
+        <linearGradient id="sunrise" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"  stop-color="#c8763a" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#e8a040" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#c8763a" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background -->
+      <rect width="1200" height="700" fill="url(#sky)"/>
+      <!-- Sunrise glow horizon -->
+      <ellipse cx="900" cy="320" rx="400" ry="120" fill="url(#sunrise)"/>
+
+      <!-- Stars -->
+      <circle cx="80"  cy="50"  r="1.2" fill="#fff" opacity="0.6"/>
+      <circle cx="200" cy="30"  r="0.8" fill="#fff" opacity="0.5"/>
+      <circle cx="350" cy="70"  r="1"   fill="#fff" opacity="0.4"/>
+      <circle cx="500" cy="20"  r="1.5" fill="#fff" opacity="0.7"/>
+      <circle cx="700" cy="55"  r="0.9" fill="#fff" opacity="0.5"/>
+      <circle cx="1100" cy="40" r="1.2" fill="#fff" opacity="0.6"/>
+      <circle cx="950" cy="80"  r="0.7" fill="#fff" opacity="0.4"/>
+
+      <!-- Mountains / treeline left -->
+      <polygon points="0,380 80,260 160,310 240,220 320,270 400,380" fill="#1a2a12" opacity="0.9"/>
+      <polygon points="0,380 60,290 130,320 200,250 270,290 350,380" fill="#1e3014" opacity="0.8"/>
+      <!-- Trees silhouette left -->
+      <g fill="#0f1e0a" opacity="0.95">
+        <polygon points="30,380 55,300 80,380"/>
+        <polygon points="70,380 100,290 130,380"/>
+        <polygon points="120,380 148,310 176,380"/>
+        <polygon points="160,380 185,295 210,380"/>
+        <polygon points="195,380 225,305 255,380"/>
+        <polygon points="240,380 268,285 296,380"/>
+      </g>
+
+      <!-- Mountains right -->
+      <polygon points="800,380 880,240 960,290 1040,210 1120,270 1200,380" fill="#1a2a12" opacity="0.9"/>
+      <!-- Trees right -->
+      <g fill="#0f1e0a" opacity="0.95">
+        <polygon points="950,380 978,295 1006,380"/>
+        <polygon points="1000,380 1030,285 1060,380"/>
+        <polygon points="1060,380 1088,298 1116,380"/>
+        <polygon points="1120,380 1148,290 1176,380"/>
+        <polygon points="1150,380 1175,308 1200,380"/>
+      </g>
+
+      <!-- Water surface -->
+      <rect x="0" y="380" width="1200" height="320" fill="url(#water)"/>
+      <!-- Water shimmer lines -->
+      <line x1="0" y1="400" x2="1200" y2="400" stroke="#1e4060" stroke-width="1" opacity="0.4"/>
+      <line x1="0" y1="430" x2="1200" y2="430" stroke="#1e4060" stroke-width="0.5" opacity="0.3"/>
+      <line x1="0" y1="460" x2="1200" y2="460" stroke="#1e4060" stroke-width="0.5" opacity="0.2"/>
+
+      <!-- Sunrise reflection on water -->
+      <ellipse cx="900" cy="420" rx="280" ry="30" fill="#c8763a" opacity="0.08"/>
+
+      <!-- ═══ FISHING SCENES ═══ -->
+
+      <!-- SCENE 1: Boat fishing (centre-right) -->
+      <g transform="translate(750, 350)">
+        <!-- Boat hull -->
+        <path d="M-70,30 Q-60,50 60,50 Q70,30 70,30 Z" fill="#3a2a12" stroke="#5a4020" stroke-width="1"/>
+        <rect x="-55" y="10" width="110" height="22" rx="2" fill="#4a3418" stroke="#6a5030" stroke-width="0.5"/>
+        <!-- Outboard motor -->
+        <rect x="60" y="20" width="12" height="30" rx="2" fill="#333"/>
+        <line x1="66" y1="48" x2="66" y2="60" stroke="#444" stroke-width="3"/>
+        <!-- Angler sitting -->
+        <ellipse cx="-15" cy="8" rx="10" ry="10" fill="#5c4a2a"/><!-- head -->
+        <rect x="-20" y="16" width="20" height="18" rx="3" fill="#3a4a2e"/><!-- body -->
+        <line x1="-10" y1="8" x2="-10" y2="-2" stroke="#4a3820" stroke-width="2"/><!-- neck -->
+        <!-- Fishing rod -->
+        <line class="cast" x1="0" y1="14" x2="80" y2="-30" stroke="#8a6a30" stroke-width="2"/>
+        <line x1="80" y1="-30" x2="80" y2="40" stroke="#c8a84b" stroke-width="0.8" stroke-dasharray="3,4"/>
+        <!-- Float bob -->
+        <g class="bob">
+          <ellipse cx="80" cy="40" rx="4" ry="2.5" fill="#e84a2a" opacity="0.9"/>
+          <rect x="79" y="37" width="2" height="8" fill="#ddd"/>
+        </g>
+      </g>
+
+      <!-- SCENE 2: Shore / sea angler (far right) -->
+      <g transform="translate(1080, 340)">
+        <!-- Tripod / rod rest -->
+        <line x1="0" y1="0" x2="-15" y2="50" stroke="#6a5030" stroke-width="2"/>
+        <line x1="0" y1="0" x2="5"  y2="50" stroke="#6a5030" stroke-width="2"/>
+        <line x1="0" y1="0" x2="15" y2="45" stroke="#6a5030" stroke-width="2"/>
+        <!-- Big surf rod -->
+        <line x1="-2" y1="5" x2="30" y2="-80" stroke="#7a6240" stroke-width="2.5"/>
+        <line x1="30" y1="-80" x2="90" y2="60" stroke="#c8a84b" stroke-width="0.7" stroke-dasharray="4,5"/>
+        <!-- Lead in water -->
+        <circle cx="90" cy="60" r="3" fill="#888" opacity="0.7"/>
+        <!-- Angler standing -->
+        <ellipse cx="-8" cy="-10" rx="9" ry="9" fill="#5c4a2a"/>
+        <rect x="-16" y="0" width="20" height="26" rx="3" fill="#2d4a5c"/><!-- waders -->
+        <rect x="-14" y="24" width="10" height="24" rx="2" fill="#1e3550"/>
+        <rect x="-4"  y="24" width="10" height="24" rx="2" fill="#1e3550"/>
+        <!-- Hat -->
+        <ellipse cx="-8" cy="-17" rx="12" ry="4" fill="#3a4a2e"/>
+        <rect x="-9" y="-30" width="18" height="14" rx="2" fill="#3a4a2e"/>
+        <!-- Rod arm -->
+        <line x1="-8" y1="6" x2="8" y2="-10" stroke="#5c4a2a" stroke-width="3" stroke-linecap="round"/>
+      </g>
+
+      <!-- SCENE 3: Fly fishing in river (left-centre) -->
+      <g transform="translate(310, 370)">
+        <!-- River bank stones -->
+        <ellipse cx="-40" cy="40" rx="25" ry="8" fill="#2a3520" opacity="0.6"/>
+        <ellipse cx="50"  cy="45" rx="30" ry="9" fill="#2a3520" opacity="0.5"/>
+        <!-- Fly fisherman wading -->
+        <ellipse cx="0" cy="-15" rx="9" ry="9" fill="#5c4a2a"/><!-- head -->
+        <rect x="-12" y="-5" width="24" height="28" rx="3" fill="#4e6b35"/><!-- wading jacket -->
+        <rect x="-10" y="23" width="10" height="30" rx="4" fill="#2a3a5c"/><!-- waders left -->
+        <rect x="0"   y="23" width="10" height="30" rx="4" fill="#2a3a5c"/><!-- waders right -->
+        <!-- Fly rod and line sweeping back -->
+        <line x1="8" y1="0" x2="90" y2="-60" stroke="#7a6240" stroke-width="1.8"/>
+        <!-- Fly line S-curve cast -->
+        <path d="M90,-60 Q120,-90 150,-70 Q180,-50 160,-30 Q140,-10 120,10" fill="none" stroke="#c8a84b" stroke-width="0.8" opacity="0.9"/>
+        <!-- Tiny fly at tip -->
+        <circle cx="120" cy="10" r="2" fill="#8b4513"/>
+        <!-- Water ripples around wader -->
+        <circle class="water-ripple"  cx="0" cy="30" r="3" fill="none" stroke="#3d8ab0" stroke-width="0.8" opacity="0.8"/>
+        <circle class="water-ripple2" cx="0" cy="30" r="3" fill="none" stroke="#3d8ab0" stroke-width="0.6" opacity="0.6"/>
+        <circle class="water-ripple3" cx="0" cy="30" r="3" fill="none" stroke="#3d8ab0" stroke-width="0.4" opacity="0.4"/>
+        <!-- Hat with feather -->
+        <ellipse cx="0" cy="-22" rx="13" ry="4.5" fill="#5c4020"/>
+        <rect x="-2" y="-36" width="16" height="15" rx="2" fill="#5c4020"/>
+        <line x1="13" y1="-32" x2="20" y2="-48" stroke="#c8a84b" stroke-width="1.2"/><!-- feather -->
+      </g>
+
+      <!-- SCENE 4: Pike angler with lure rod (left) -->
+      <g transform="translate(130, 350)">
+        <!-- Vegetation / reeds -->
+        <line x1="-30" y1="0"  x2="-28" y2="-60" stroke="#3a5a20" stroke-width="3"/>
+        <line x1="-20" y1="5"  x2="-18" y2="-50" stroke="#3a5a20" stroke-width="2.5"/>
+        <line x1="-10" y1="2"  x2="-9"  y2="-70" stroke="#3a5a20" stroke-width="3"/>
+        <!-- Reed heads -->
+        <ellipse cx="-28" cy="-62" rx="4" ry="10" fill="#6a4a20" opacity="0.8"/>
+        <ellipse cx="-18" cy="-52" rx="3" ry="8"  fill="#6a4a20" opacity="0.8"/>
+        <ellipse cx="-9"  cy="-72" rx="4" ry="10" fill="#6a4a20" opacity="0.8"/>
+        <!-- Angler -->
+        <ellipse cx="15" cy="-12" rx="9" ry="9" fill="#5c4a2a"/>
+        <rect x="5" y="-2" width="22" height="26" rx="3" fill="#3a4a2e"/>
+        <!-- Spinning rod -->
+        <line x1="22" y1="4" x2="80" y2="-40" stroke="#7a6240" stroke-width="2"/>
+        <line x1="80" y1="-40" x2="60" y2="20" stroke="#c8a84b" stroke-width="0.7" stroke-dasharray="3,4"/>
+        <!-- Lure in water -->
+        <g class="swim">
+          <ellipse cx="60" cy="20" rx="8" ry="4" fill="#e83020" opacity="0.85"/>
+          <line x1="52" y1="20" x2="47" y2="20" stroke="#888" stroke-width="0.8"/>
+          <line x1="68" y1="20" x2="73" y2="20" stroke="#888" stroke-width="0.8"/>
+        </g>
+        <!-- Pike hunting the lure below surface -->
+        <g class="swim2" transform="translate(50,35)">
+          <ellipse rx="22" ry="7" fill="#2a6a2a" opacity="0.5"/>
+          <polygon points="22,0 35,-4 35,4" fill="#2a6a2a" opacity="0.5"/>
+          <!-- Spots -->
+          <circle cx="-5" cy="-2" r="2.5" fill="#1a4a1a" opacity="0.4"/>
+          <circle cx="5"  cy="2"  r="2" fill="#1a4a1a" opacity="0.4"/>
+          <circle cx="12" cy="-1" r="2" fill="#1a4a1a" opacity="0.4"/>
+        </g>
+      </g>
+
+      <!-- SCENE 5: Carp angler on far left bank -->
+      <g transform="translate(480, 360)">
+        <!-- Bedchair / camp setup suggestion -->
+        <rect x="-40" y="10" width="60" height="12" rx="2" fill="#3a4a2e" opacity="0.7"/><!-- mat -->
+        <!-- Bite alarm pods -->
+        <rect x="-35" y="0" width="6" height="12" rx="1" fill="#222"/>
+        <rect x="-25" y="0" width="6" height="12" rx="1" fill="#222"/>
+        <!-- Rods on rests pointing out -->
+        <line x1="-32" y1="4"  x2="30" y2="-50" stroke="#7a6240" stroke-width="1.8"/>
+        <line x1="-22" y1="4"  x2="35" y2="-45" stroke="#7a6240" stroke-width="1.8"/>
+        <!-- Lines into water -->
+        <line x1="30" y1="-50" x2="20" y2="40" stroke="#c8a84b" stroke-width="0.7" stroke-dasharray="3,5" opacity="0.8"/>
+        <line x1="35" y1="-45" x2="30" y2="44" stroke="#c8a84b" stroke-width="0.7" stroke-dasharray="3,5" opacity="0.8"/>
+        <!-- Boilie on line suggestion -->
+        <circle cx="20" cy="40" r="3" fill="#c8a84b" opacity="0.6"/>
+        <circle cx="30" cy="44" r="3" fill="#e84a2a" opacity="0.6"/>
+        <!-- Big carp cruising -->
+        <g class="swim" transform="translate(40, 60)">
+          <ellipse rx="28" ry="10" fill="#c8a050" opacity="0.35"/>
+          <polygon points="28,0 42,-5 42,5" fill="#c8a050" opacity="0.3"/>
+          <ellipse cx="-10" cy="-3" rx="4" ry="3" fill="#a87a30" opacity="0.25"/><!-- scale detail -->
+        </g>
+      </g>
+
+      <!-- SCENE 6: Game/Salmon river far right bank -->
+      <g transform="translate(620, 355)">
+        <!-- Rocky bank -->
+        <ellipse cx="0"  cy="50" rx="30" ry="10" fill="#2a3520" opacity="0.7"/>
+        <ellipse cx="35" cy="48" rx="20" ry="7"  fill="#2a3520" opacity="0.6"/>
+        <!-- Angler -->
+        <ellipse cx="0" cy="-12" rx="8" ry="8" fill="#5c4a2a"/>
+        <rect x="-10" y="-4" width="20" height="24" rx="3" fill="#8b4513"/><!-- tweed jacket -->
+        <rect x="-8"  y="20" width="8"  height="28" rx="3" fill="#3a4a2e"/>
+        <rect x="2"   y="20" width="8"  height="28" rx="3" fill="#3a4a2e"/>
+        <!-- Double handed salmon rod -->
+        <line x1="6" y1="2" x2="-20" y2="-80" stroke="#8a6a30" stroke-width="2.2"/>
+        <!-- Leader loop/tip -->
+        <path d="M-20,-80 Q-40,-95 -50,-75 Q-55,-55 -40,-45" fill="none" stroke="#c8a84b" stroke-width="0.9" opacity="0.8"/>
+        <circle cx="-40" cy="-45" r="2.5" fill="#8b2020"/><!-- fly -->
+        <!-- Leaping salmon in foreground -->
+        <g transform="translate(-80, 20)" filter="url(#glow)">
+          <g style="transform: rotate(-30deg);">
+            <ellipse rx="18" ry="6" fill="#5a8a9a" opacity="0.85"/>
+            <polygon points="18,0 28,-5 28,5" fill="#4a7a8a" opacity="0.85"/>
+            <!-- Silver shimmer -->
+            <ellipse cx="-2" cy="-1" rx="8" ry="3" fill="#a0c0c8" opacity="0.4"/>
+          </g>
+        </g>
+        <!-- Water splash -->
+        <line x1="-80" y1="22" x2="-90" y2="14" stroke="#7ab0c8" stroke-width="1.5" opacity="0.6"/>
+        <line x1="-80" y1="22" x2="-72" y2="12" stroke="#7ab0c8" stroke-width="1.5" opacity="0.6"/>
+        <line x1="-80" y1="22" x2="-80" y2="10" stroke="#7ab0c8" stroke-width="1.5" opacity="0.6"/>
+      </g>
+
+      <!-- Moonlight / dusk atmosphere -->
+      <circle cx="950" cy="90" r="35" fill="#f0e880" opacity="0.08" filter="url(#glow)"/>
+      <circle cx="950" cy="90" r="22" fill="#f0e880" opacity="0.12"/>
+    </svg>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Est. 2025 — Anglers Trading Post</div>
+    <h1>The Anglers<span>Swap Shop</span></h1>
+    <p class="hero-sub">Buy, sell and swap quality fishing gear with anglers across the UK. Coarse, sea, game and sport fishing equipment — all in one place.</p>
+    <div class="hero-actions">
+      <a href="#listings" class="btn-primary">Browse Listings</a>
+      <a href="#sell" class="btn-ghost">List Your Gear</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num" id="stat-listings">0</span>
+    <span class="stat-label">Active Listings</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">4</span>
+    <span class="stat-label">Categories</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">Free</span>
+    <span class="stat-label">To List</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">UK</span>
+    <span class="stat-label">Anglers Only</span>
+  </div>
+</div>
+
+<!-- CATEGORY TABS + LISTINGS -->
+<div id="listings" class="listings-section">
+  <div class="section-header" style="text-align:left; margin-bottom:1.5rem;">
+    <span class="section-tag">Browse Gear</span>
+    <h2 style="font-size:2rem;">Current Listings</h2>
+  </div>
+
+  <div class="category-nav">
+    <button class="cat-tab active" data-cat="all"     data-icon="🎣" onclick="filterCat('all',this)">All</button>
+    <button class="cat-tab" data-cat="coarse"  data-icon="🪱" onclick="filterCat('coarse',this)">Coarse</button>
+    <button class="cat-tab" data-cat="sea"     data-icon="⚓" onclick="filterCat('sea',this)">Sea</button>
+    <button class="cat-tab" data-cat="game"    data-icon="🦋" onclick="filterCat('game',this)">Game</button>
+    <button class="cat-tab" data-cat="sport"   data-icon="🏆" onclick="filterCat('sport',this)">Sport</button>
+  </div>
+
+  <div class="listings-grid" id="listingsGrid"></div>
+  <div class="empty-state" id="emptyState">
+    <p style="font-size:3rem; margin-bottom:1rem;">🎣</p>
+    <p style="font-size:1.1rem; color:rgba(240,234,216,0.5);">No listings in this category yet.<br>Be the first to list your gear!</p>
+    <a href="#sell" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">List Your Gear</a>
+  </div>
+</div>
+
+<!-- SELL / LIST GEAR FORM -->
+<div id="sell" class="sell-section">
+  <div class="section-header">
+    <span class="section-tag">List Your Gear</span>
+    <h2>Sell or Swap</h2>
+  </div>
+
+  <div class="form-wrapper">
+    <form id="sellForm" onsubmit="submitListing(event)">
+      <div class="form-grid">
+        <!-- Category -->
+        <div class="form-group">
+          <label for="fType">Fishing Type *</label>
+          <select id="fType" required>
+            <option value="">Select type…</option>
+            <option value="coarse">Coarse</option>
+            <option value="sea">Sea</option>
+            <option value="game">Game</option>
+            <option value="sport">Sport</option>
+          </select>
+        </div>
+
+        <!-- Condition -->
+        <div class="form-group">
+          <label for="fCondition">Condition *</label>
+          <select id="fCondition" required>
+            <option value="">Select condition…</option>
+            <option value="New">New (unused)</option>
+            <option value="Used">Used — good condition</option>
+            <option value="Fair">Fair — some wear</option>
+            <option value="Poor">Poor — spares/repair</option>
+          </select>
+        </div>
+
+        <!-- Item -->
+        <div class="form-group full">
+          <label for="fItem">Item Name *</label>
+          <input type="text" id="fItem" placeholder="e.g. Shimano Baitrunner 6000" required/>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group full">
+          <label for="fDesc">Description *</label>
+          <textarea id="fDesc" placeholder="Describe your item — age, any faults, what's included, reason for selling…" required></textarea>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+          <label for="fPrice">Guide Price (£) *</label>
+          <input type="number" id="fPrice" placeholder="0.00" min="0" step="0.01" required/>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+          <label for="fLocation">Location *</label>
+          <input type="text" id="fLocation" placeholder="e.g. Leeds, Yorkshire" required/>
+        </div>
+
+        <!-- Contact name -->
+        <div class="form-group">
+          <label for="fName">Your Name *</label>
+          <input type="text" id="fName" placeholder="First name or username" required/>
+        </div>
+
+        <!-- Contact detail -->
+        <div class="form-group">
+          <label for="fContact">Contact (email or phone) *</label>
+          <input type="text" id="fContact" placeholder="your@email.com or 07xxx" required/>
+        </div>
+
+        <!-- Image upload -->
+        <div class="form-group full">
+          <label>Photos</label>
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="fImages" accept="image/*" multiple onchange="previewImages(event)"/>
+            <span class="upload-icon">📷</span>
+            <p><strong>Click to upload</strong> or drag & drop photos here</p>
+            <p style="font-size:0.8rem; margin-top:0.4rem; opacity:0.6">JPG, PNG, WEBP — up to 5 images</p>
+            <div class="upload-preview" id="uploadPreview"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit">Post Listing — It's Free</button>
+      </div>
+    </form>
+
+    <!-- CSV UPLOAD -->
+    <div class="csv-section">
+      <h3>Bulk Upload via CSV</h3>
+      <p>Dealers and traders can upload multiple listings at once using a CSV file in the format below:</p>
+      <div class="csv-format">Type,Item,Description,GuidePrice,Condition<br>
+coarse,Daiwa Ninja Rod,7ft float rod excellent cond,25.00,Used<br>
+sea,Penn Surfmaster 100,Heavy surf reel needs service,15.00,Poor<br>
+game,Hardy Marquis Reel,Classic salmon reel perfect order,120.00,New</div>
+      <div class="csv-actions">
+        <label class="btn-csv">
+          📂 Upload CSV
+          <input type="file" accept=".csv,text/csv" onchange="uploadCSV(event)"/>
+        </label>
+        <button class="btn-csv" onclick="downloadTemplate()">⬇ Download Template</button>
+        <span class="csv-status" id="csvStatus"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY SECTIONS -->
+<section id="coarse" style="background:linear-gradient(135deg,#0f1a0a 0%,#111e0d 100%); border-top:1px solid rgba(168,198,108,0.08);">
+  <div class="section-header">
+    <span class="section-tag">🪱 Category</span>
+    <h2>Coarse Fishing</h2>
+  </div>
+  <p style="text-align:center; color:rgba(240,234,216,0.6); max-width:600px; margin:0 auto;">Rods, reels, bite alarms, bedchairs, carp gear, poles, floats, feeders, weights and all coarse fishing tackle.</p>
+</section>
+
+<section id="sea" style="background:linear-gradient(135deg,#0a1218 0%,#0d1820 100%); border-top:1px solid rgba(168,198,108,0.08);">
+  <div class="section-header">
+    <span class="section-tag">⚓ Category</span>
+    <h2>Sea Fishing</h2>
+  </div>
+  <p style="text-align:center; color:rgba(240,234,216,0.6); max-width:600px; margin:0 auto;">Surf rods, boat rods, Penn reels, multipliers, downriggers, lures, lead weights, sea tackle and accessories.</p>
+</section>
+
+<section id="game" style="background:linear-gradient(135deg,#0f1a0a 0%,#0c1208 100%); border-top:1px solid rgba(168,198,108,0.08);">
+  <div class="section-header">
+    <span class="section-tag">🦋 Category</span>
+    <h2>Game Fishing</h2>
+  </div>
+  <p style="text-align:center; color:rgba(240,234,216,0.6); max-width:600px; margin:0 auto;">Fly rods, fly reels, fly lines, waders, wading jackets, flies, vests, landing nets and all game fishing equipment.</p>
+</section>
+
+<section id="sport" style="background:linear-gradient(135deg,#12100a 0%,#1a160a 100%); border-top:1px solid rgba(168,198,108,0.08);">
+  <div class="section-header">
+    <span class="section-tag">🏆 Category</span>
+    <h2>Sport Fishing</h2>
+  </div>
+  <p style="text-align:center; color:rgba(240,234,216,0.6); max-width:600px; margin:0 auto;">Lure rods, predator gear, spinning rods, kayak fishing kit, big game tackle, and competitive fishing equipment.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fish-row">🎣 🐟 🐠 🎣 🦈 🐡 🎣</div>
+  <p style="font-family:'Playfair Display',serif; font-size:1.2rem; color:rgba(240,234,216,0.7); margin-bottom:1rem;">The Anglers Swap Shop</p>
+  <p>Free to list. Free to browse. Just anglers helping anglers.</p>
+  <p style="margin-top:0.5rem;">Coarse · Sea · Game · Sport</p>
+  <p style="margin-top:1.5rem; font-size:0.78rem; opacity:0.35;">© 2025 The Anglers Swap Shop. All listings are placed by individual users. Always meet safely and verify gear before purchase.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA STORE ──
+let listings = JSON.parse(localStorage.getItem('ass_listings') || '[]');
+
+// ── DEMO LISTINGS ──
+const demoListings = [
+  { id:'d1', type:'coarse', item:'Shimano Baitrunner 6000 XT', desc:'Used 3 seasons, great condition. Line roller recently replaced. Smooth drag.', price:'45', condition:'Used', location:'Leeds, Yorkshire', name:'Dave T', contact:'dave@email.com', images:[] },
+  { id:'d2', type:'sea',    item:'Penn Surfblaster 100 Reel', desc:'Heavy surf reel, used for cod and bass off beaches. Some salt marks but works perfectly.', price:'30', condition:'Fair', location:'Scarborough', name:'Mick J', contact:'07700900123', images:[] },
+  { id:'d3', type:'game',   item:'Hardy Duchess 8ft Fly Rod', desc:'Classic Hardy cane rod, bamboo, excellent condition. Comes with original cloth sleeve.', price:'180', condition:'New', location:'Inverness', name:'Angus M', contact:'angus@email.com', images:[] },
+  { id:'d4', type:'sport',  item:'Fox Rage Pro Shad Kit', desc:'Full pike lure kit, 12 soft baits, jig heads, trace wires. All unused.', price:'22', condition:'New', location:'Norfolk Broads', name:'Sarah K', contact:'sarah@email.com', images:[] },
+  { id:'d5', type:'coarse', item:'Nash Tackle Siren R3 Alarms x3', desc:'Set of three bite alarms with receiver. All working, battery compartments clean.', price:'65', condition:'Used', location:'Peterborough', name:'Rob C', contact:'rob@email.com', images:[] },
+  { id:'d6', type:'sea',    item:'Zziplex Competitor MkII Surf Rod', desc:'13ft tournament surf caster. Very fast taper, needs new tip ring. Bargain.', price:'40', condition:'Poor', location:'Cornwall', name:'Pete W', contact:'pete@email.com', images:[] },
+];
+
+// Merge demo + saved
+if (!localStorage.getItem('ass_init')) {
+  listings = [...demoListings, ...listings];
+  localStorage.setItem('ass_init','1');
+  localStorage.setItem('ass_listings', JSON.stringify(listings));
+}
+
+let activeFilter = 'all';
+let imageData = [];
+
+function renderListings(filter) {
+  const grid = document.getElementById('listingsGrid');
+  const empty = document.getElementById('emptyState');
+  const filtered = filter === 'all' ? listings : listings.filter(l => l.type === filter);
+
+  document.getElementById('stat-listings').textContent = listings.length;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.add('show');
+    return;
+  }
+
+  empty.classList.remove('show');
+  grid.innerHTML = filtered.map(l => `
+    <div class="listing-card">
+      <div class="listing-img">
+        <div class="listing-img-placeholder">
+          ${l.images && l.images.length > 0
+            ? `<img src="${l.images[0]}" alt="${l.item}">`
+            : `<span style="font-size:3rem">${typeIcon(l.type)}</span>`}
+        </div>
+        <span class="condition-badge ${l.condition}">${l.condition}</span>
+      </div>
+      <div class="listing-body">
+        <div class="listing-type">${l.type.toUpperCase()}</div>
+        <div class="listing-title">${l.item}</div>
+        <div class="listing-desc">${l.desc}</div>
+        <div class="listing-footer">
+          <span class="listing-price">£${parseFloat(l.price).toFixed(2)}</span>
+          <div>
+            <div class="listing-location">📍 ${l.location}</div>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.78rem; color:rgba(240,234,216,0.45);">Listed by ${l.name}</span>
+          <button class="listing-contact" onclick="contactSeller('${l.contact}','${l.name}')">Contact</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function typeIcon(t) {
+  return {coarse:'🪱',sea:'⚓',game:'🦋',sport:'🏆'}[t] || '🎣';
+}
+
+function filterCat(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderListings(cat);
+}
+
+function contactSeller(contact, name) {
+  if (contact.includes('@')) {
+    window.location.href = `mailto:${contact}?subject=Enquiry from Anglers Swap Shop`;
+  } else {
+    showToast(`Contact ${name} on: ${contact}`);
+  }
+}
+
+// ── IMAGE PREVIEW ──
+function previewImages(e) {
+  const files = Array.from(e.target.files).slice(0,5);
+  const preview = document.getElementById('uploadPreview');
+  preview.innerHTML = '';
+  imageData = [];
+
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      imageData.push(ev.target.result);
+      const img = document.createElement('img');
+      img.src = ev.target.result;
+      img.className = 'preview-thumb';
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+// Drag & drop
+const zone = document.getElementById('uploadZone');
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => {
+  e.preventDefault();
+  zone.classList.remove('drag-over');
+  document.getElementById('fImages').files = e.dataTransfer.files;
+  previewImages({target: {files: e.dataTransfer.files}});
+});
+
+// ── SUBMIT LISTING ──
+function submitListing(e) {
+  e.preventDefault();
+  const listing = {
+    id: Date.now().toString(),
+    type:      document.getElementById('fType').value,
+    item:      document.getElementById('fItem').value,
+    desc:      document.getElementById('fDesc').value,
+    price:     document.getElementById('fPrice').value,
+    condition: document.getElementById('fCondition').value,
+    location:  document.getElementById('fLocation').value,
+    name:      document.getElementById('fName').value,
+    contact:   document.getElementById('fContact').value,
+    images:    imageData,
+    date:      new Date().toISOString()
+  };
+
+  listings.unshift(listing);
+  localStorage.setItem('ass_listings', JSON.stringify(listings));
+  renderListings(activeFilter);
+
+  document.getElementById('sellForm').reset();
+  document.getElementById('uploadPreview').innerHTML = '';
+  imageData = [];
+
+  showToast('✅ Listing posted successfully!');
+  setTimeout(() => { window.location.hash = '#listings'; }, 1200);
+}
+
+// ── CSV UPLOAD ──
+function uploadCSV(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const lines = ev.target.result.trim().split('\n');
+    const header = lines[0].toLowerCase().split(',').map(h => h.trim());
+    let count = 0;
+
+    lines.slice(1).forEach(line => {
+      if (!line.trim()) return;
+      const vals = line.split(',').map(v => v.trim().replace(/^"|"$/g,''));
+      const row = {};
+      header.forEach((h, i) => row[h] = vals[i] || '');
+
+      const type = (row.type || '').toLowerCase();
+      if (!['coarse','sea','game','sport'].includes(type)) return;
+
+      const condMap = {'new':'New','used':'Used','fair':'Fair','poor':'Poor'};
+      const cond = condMap[(row.condition || '').toLowerCase()] || 'Used';
+
+      listings.unshift({
+        id: Date.now().toString() + Math.random(),
+        type,
+        item:      row.item || 'Unknown item',
+        desc:      row.description || '',
+        price:     parseFloat(row.guideprice || row['guide price'] || 0).toFixed(2),
+        condition: cond,
+        location:  row.location || 'UK',
+        name:      row.name || 'Seller',
+        contact:   row.contact || '',
+        images:    [],
+        date:      new Date().toISOString()
+      });
+      count++;
+    });
+
+    localStorage.setItem('ass_listings', JSON.stringify(listings));
+    renderListings(activeFilter);
+    document.getElementById('csvStatus').textContent = `✅ ${count} listing${count !== 1 ? 's' : ''} imported`;
+    showToast(`📋 ${count} listing${count !== 1 ? 's' : ''} imported from CSV`);
+    e.target.value = '';
+  };
+  reader.readAsText(file);
+}
+
+// ── DOWNLOAD CSV TEMPLATE ──
+function downloadTemplate() {
+  const csv = `Type,Item,Description,GuidePrice,Condition,Location,Name,Contact
+coarse,Example Rod 12ft,Carbon float rod in good condition,25.00,Used,Leeds Yorkshire,John A,john@example.com
+sea,Penn Reel 6000,Heavy surf multiplier reel,40.00,Fair,Scarborough,Mike B,07700900000
+game,Hardy Fly Rod 9ft,Classic game rod with reel,150.00,New,Inverness Scotland,Angus C,angus@example.com
+sport,Pike Lure Kit,Set of 10 mixed lures jig heads and traces,18.00,New,Norfolk Broads,Sarah D,sarah@example.com`;
+
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'anglers-swap-shop-template.csv';
+  a.click();
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ── COUNTER ANIMATION ──
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(timer); return; }
+    el.textContent = Math.floor(start);
+  }, 16);
+}
+
+// ── INIT ──
+renderListings('all');
+setTimeout(() => animateCounter(document.getElementById('stat-listings'), listings.length, 800), 400);
+</script>
+</body>
+</html>
